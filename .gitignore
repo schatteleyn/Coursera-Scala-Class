@@ -1,4 +1,8 @@
 *.DS_Store
+.cache
+.classpath
+.project
+.settings/
 *.class
 *.log
 

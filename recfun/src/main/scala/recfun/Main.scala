@@ -55,5 +55,20 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+    
+    if (money == 0 || coins.isEmpty) {
+      1
+    } else {
+      val sortedCoins = coins.sortWith(_ > _)
+      val h = sortedCoins.head
+      val t = sortedCoins.tail
+      if (money - h >= h) {
+        countChange(money - h, coins)
+      } else {
+        countChange(money - h, t)
+      }
+      0 // just to avoid error from Eclipse
+    }
+  }
 }

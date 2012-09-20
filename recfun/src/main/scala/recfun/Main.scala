@@ -14,17 +14,18 @@ object Main {
   /**
    * Exercise 1
    */
-  def pascal(c: Int, r: Int): Int =
-    if (r <= 0 || c == 1 || c >= r + 1) {
+  def pascal(c: Int, r: Int): Int = {
+    if (r == 0 || c <= 0 || c >= r) {
       1
     } else { 
-	      if (c == 2 || c == r - 1) {
+	      if (c == 1 || c == r - 1) {
 	        r
 	    } else {
 	      val value = pascal(c - 1, r - 1) + pascal(c + 1, r - 1)
 	        value
 	    }
     }
+  }
 
   /**
    * Exercise 2

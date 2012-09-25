@@ -31,22 +31,13 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    def parenthesis(chars: List[Char], o: Int, f: Int): Boolean = {
-      if (!chars.isEmpty) {
-        val l = chars.head
-        val list = chars.tail
-        if (l == '(') {
-          parenthesis(list, o + 1, f)
-        } else {
-          if (l == ')') {
-            if (f == o) false else parenthesis(list, o, f + 1)
-          } else {
-            parenthesis(list, o, f)
-          }
-        }
-      } else {
-        (o == f)
-      }
+    def parenthesis(chars: List[Char], o: Int, f: Int): Boolean = (chars, o, f) match {
+      case (Nil, o, f) if o == f => true 
+      case (_, o, f) if f > o => false
+      case ('(' :: tail, _, _) => parenthesis(tail, o + 1, f)
+      case (')' :: tail, _, _) => parenthesis(tail, o, f + 1)
+      case (_ :: tail, _, _) => parenthesis(tail, o, f)
+      case (_, o, f) => false 
     }
     parenthesis(chars, 0, 0)
   }

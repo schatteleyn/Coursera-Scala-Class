@@ -1,5 +1,3 @@
-// This one is shitty, I didn't have enough time to rally think about it, so it's real bad.
-
 package objsets
 
 import common._
@@ -24,7 +22,7 @@ abstract class TweetSet {
 	    else{
 	      val h = accu.head
 	      if (!p(h)) {
-	        val l = accu remove h
+	        val l = accu.remove(h)
 	        filter0(p, l)
 	      }
 	      else {
@@ -42,28 +40,18 @@ abstract class TweetSet {
       else {
         val h = this.head
         val t = this.tail
-        if (that contains h ) {
-          t union that 
+        if (that.contains(h)) {
+          t.union(that)
         } else {
-         that incl h
-         t union that
+         that.incl(h)
+         t.union(that)
         }
       }
     }
   }
 
   // Hint: the method "remove" on TweetSet will be very useful.
-  def ascendingByRetweet: Trending = {
-    val e = new EmptyTrending
-    def help(accu: TweetSet): Trending = {
-      foreach(e => 
-        val min = accu.findMin
-        accu remove min
-        accu incl  val ne = new NonEmptyTrending(min. e)
-        )
-    }
-    ascendingByRetweet
-  }
+  def ascendingByRetweet: Trending = ???
 
   // The following methods are provided for you, and do not have to be changed
   // -------------------------------------------------------------------------
@@ -96,7 +84,7 @@ abstract class TweetSet {
 
 class Empty extends TweetSet {
 
-  def filter0(p: Tweet => Boolean, accu: TweetSet): TweetSet = this
+  def filter0(p: Tweet => Boolean, accu: TweetSet): TweetSet = ???
 
   // The following methods are provided for you, and do not have to be changed
   // -------------------------------------------------------------------------
@@ -173,16 +161,17 @@ class NonEmptyTrending(elem: Tweet, next: Trending) extends Trending {
     "NonEmptyTrending(" + elem.retweets + ", " + next + ")"
 }
 
-object GoogleVsApple {
-  val google = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus")
-  val apple = List("ios", "iOS", "iphone", "iPhone", "ipad", "iPad")
+object GoogleVsApple {import scala.runtime.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(4777); 
+  val google = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus");System.out.println("""google  : List[java.lang.String] = """ + $show(google ));$skip(72); 
+  
+  val apple = List("ios", "iOS", "iphone", "iPhone", "ipad", "iPad");System.out.println("""apple  : List[java.lang.String] = """ + $show(apple ));$skip(36); 
 
-  val googleTweets: TweetSet = ???   
+  val googleTweets: TweetSet = ???;System.out.println("""googleTweets  : objsets.TweetSet = """ + $show(googleTweets ));$skip(35); 
 
-  val appleTweets: TweetSet = ???
+  val appleTweets: TweetSet = ???;System.out.println("""appleTweets  : objsets.TweetSet = """ + $show(appleTweets ));$skip(98); 
 
   // Q: from both sets, what is the tweet with highest #retweets?
-  val trending: Trending = ???
+  val trending: Trending = ???;System.out.println("""trending  : objsets.Trending = """ + $show(trending ))}
 }
 
 object Main extends App {
